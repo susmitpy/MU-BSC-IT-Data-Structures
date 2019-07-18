@@ -102,6 +102,24 @@ void reverse(int *p, int n)
   printArray(p,n);
 }
 
+void sort(int *p, int n)
+{
+  int i,j,k;
+  for(i=0;i<n-1;i++)
+  {
+    for(j=0;j<n-i-1;j++)
+    {
+      if(p[j] > p[j+1])
+      {
+        k = p[j];
+        p[j] = p[j+1];
+        p[j+1] = k;
+      }
+    }
+  }
+  printArray(p,n);
+}
+
 
 void options(int *p, int n)
 {
@@ -123,6 +141,9 @@ void options(int *p, int n)
       break;
     case 'r':
       reverse(p,n);
+      break;
+    case 'a':
+      sort(p,n);
       break;
     default:
       printf("Invalid operation\n");
