@@ -89,7 +89,6 @@ struct Matrix tranMatrix(struct Matrix m)
   return t;
 }
 
-
 int main()
 {
  struct Matrix a,b,c,d,e;
@@ -107,6 +106,5 @@ int main()
  printf("\nTranspose of first matrix: \n");
  e = tranMatrix(a);
  displayMatrix(e);
-
  return 0;
 }
