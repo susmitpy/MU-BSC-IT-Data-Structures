@@ -89,6 +89,20 @@ void search(int *p, int n)
   }
 }
 
+void reverse(int *p, int n)
+{
+  int temp, i=0, j=n-1;
+  while (i<j) {
+    temp = p[i];
+    p[i] = p[j];
+    p[j] = temp;
+    i++;
+    j--;
+  }
+  printArray(p,n);
+}
+
+
 void options(int *p, int n)
 {
   char c;
@@ -106,6 +120,9 @@ void options(int *p, int n)
       break;
     case 's':
       search(p, n);
+      break;
+    case 'r':
+      reverse(p,n);
       break;
     default:
       printf("Invalid operation\n");
