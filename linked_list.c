@@ -28,6 +28,13 @@ void search(int data)
   printf("Position:%d\n",index+1);
 }
 
+void delete()
+{
+  struct Node* toDel = head;
+  head = head->next;
+  free(toDel);
+}
+
 void reverse()
 {
   struct Node* cn;
@@ -56,6 +63,7 @@ void display()
     printf("%d ",curr->data);
     curr = curr->next;
   }
+  printf("\n");
 }
 
 int main()
@@ -66,9 +74,12 @@ int main()
   insert(30);
   printf("Searching for 20\n");
   search(20);
-  display();
-  printf("\nReversing\n");
   reverse();
   display();
+  delete();
+  display();
+  delete();
+  display();
+
   return 0;
 }
