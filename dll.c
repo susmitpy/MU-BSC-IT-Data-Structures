@@ -1,94 +1,17 @@
 #include <stdio.h>
-<<<<<<< HEAD
-=======
 #include <conio.h>
->>>>>>> 62876989d91b3d157a4345437be4e259824ced69
 #include <stdlib.h>
 
 struct Node
 {
-<<<<<<< HEAD
-  int data;
-  struct Node* prev;
-  struct Node* next;
-=======
 	int data;
 	struct Node* next;
 	struct Node* prev;
->>>>>>> 62876989d91b3d157a4345437be4e259824ced69
 };
 
 struct Node* head = NULL;
 struct Node* last = NULL;
 
-<<<<<<< HEAD
-void insertNode()
-{
-  int data;
-  printf("Enter data: ");
-  scanf("%d", &data);
-  struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
-  newNode->data = data;
-  newNode->prev = last;
-  last->next = newNode;
-  last = newNode;
-  printf("\nNode inserted\n");
-}
-
-void createList(int n) {
-    int i, data;
-    if (head == NULL)
-    {
-      printf("\nEnter data of first node: ");
-      scanf("%d",&data);
-      head = (struct Node*) malloc(sizeof(struct Node));
-      head->data=data;
-      head->prev=NULL;
-      head->next=NULL;
-      last=head;
-      n=n-1;
-    }
-    for(i=1;i<=n;i++)
-    {
-      insertNode();
-    }
-}
-
-void displayLR()
-{
-  struct Node* cn = head;
-  while (cn!=NULL) {
-    printf("%d ",cn->data);
-    cn = cn->next;
-  }
-  printf("\n");
-}
-
-void displayRL()
-{
-  struct Node* cn = last;
-  while (cn!=NULL) {
-    printf("%d ",cn->data);
-    cn = cn->prev;
-  }
-  printf("\n");
-}
-
-
-
-
-
-int main()
-{
-  int n;
-  printf("How many elements: ");
-  scanf("%d",&n);
-  createList(n);
-  printf("Display LR: ");
-  displayLR();
-  printf("Display RL: ");
-  displayRL();
-=======
 void create(int d)
 {
 	struct Node* nn;
@@ -171,12 +94,12 @@ void reverse()
   }
   head = pn;
 
-  
+
 }
 
 
 void search(int data)
-{	
+{
   struct Node* curr = head;
   int index=0;
   printf("Searching for %d\n",data);
@@ -186,7 +109,7 @@ void search(int data)
   }
   printf("Position:%d\n",index+1);
 }
-	
+
 void delete()
 {
 	struct Node* toDel = head;
@@ -234,5 +157,4 @@ int main()
 	display();
 	getch();
 	return 0;
->>>>>>> 62876989d91b3d157a4345437be4e259824ced69
 }
