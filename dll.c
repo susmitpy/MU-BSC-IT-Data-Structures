@@ -11,7 +11,7 @@ struct Node
 struct Node* head = NULL;
 struct Node* last = NULL;
 
-void insertNode()
+void insertNodeAtLast()
 {
   int data;
   printf("Enter data: ");
@@ -23,6 +23,22 @@ void insertNode()
   last = newNode;
   printf("\nNode inserted\n");
 }
+
+void insertNodeAtStart()
+{
+  int data;
+  printf("Enter data: ");
+  scanf("%d", &data);
+  struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
+  newNode->data = data;
+  newNode->prev = NULL;
+  newNode->next = head;
+  head->prev=newNode;
+  head = newNode;
+  printf("\nNode inserted\n");
+}
+
+
 
 void createList(int n) {
     int i, data;

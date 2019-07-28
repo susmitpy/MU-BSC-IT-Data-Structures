@@ -9,12 +9,24 @@ struct Node
 
 struct Node* head = NULL;
 
-void insert(int data)
+void insertAtStart(int data)
 {
   struct Node* link = (struct Node*) malloc(sizeof(struct Node));
   link->data=data;
   link->next=head;
   head=link;
+}
+
+void insertAtLast(int data)
+{
+  struct Node* nn = (struct Node*) malloc(sizeof(struct Node));
+  struct Node* temp = head;
+  while (temp->next!=NULL) {
+    temp = temp->next;
+  }
+  nn->data=data;
+  nn->next=NULL;
+  temp->next=nn;
 }
 
 void search(int data)
