@@ -77,8 +77,8 @@ struct Matrix tranMatrix(struct Matrix m)
 {
   struct Matrix t;
   int i,j;
-  t.r = m.r;
-  t.c = m.c;
+  t.r = m.c;
+  t.c = m.r;
   for(i=0;i<t.r;i++)
   {
     for(j=0;j<t.c;j++)
