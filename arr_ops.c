@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+// Insert, Search, Sort Reverse
+
 void printArray(int *arr,int n)
 {
   int i;
@@ -51,12 +53,13 @@ void delete(int *p, int n)
   printf("Delete Operation\n");
   index = getIndex();
   j = index;
-  while (j<n)
+  n = n-1;
+  while (j<=n)
   {
     p[j] = p[j+1];
     j = j+1;
   }
-  n = n-1;
+
   printArray(p,n);
 }
 

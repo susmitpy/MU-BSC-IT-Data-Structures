@@ -9,6 +9,13 @@ struct Node
 
 struct Node* head = NULL;
 
+void createList(int data)
+{
+  head = (struct Node*) malloc(sizeof(struct Node));
+  head->data=data;
+  head->next=NULL;
+}
+
 void insertAtStart(int data)
 {
   struct Node* link = (struct Node*) malloc(sizeof(struct Node));
@@ -22,10 +29,9 @@ void insertAtLast(int data)
   struct Node* nn = (struct Node*) malloc(sizeof(struct Node));
   struct Node* temp = head;
   while (temp->next!=NULL) {
-    temp = temp->next;
+    temp=temp->next;
   }
   nn->data=data;
-  nn->next=NULL;
   temp->next=nn;
 }
 
@@ -53,11 +59,8 @@ void reverse()
   struct Node* pn;
   pn = head;
   cn = head->next;
-
   head = head->next;
   pn->next = NULL;
-
-
   while (head!=NULL) {
     head = head->next;
     cn->next = pn;
@@ -81,9 +84,12 @@ void display()
 int main()
 {
   // Insert at beginning of list
-  insert(10);
-  insert(20);
-  insert(30);
+  createList(10);
+  display();
+  insertAtLast(20);
+  display();
+  insertAtLast(30);
+  display();
   printf("Searching for 20\n");
   search(20);
   reverse();
