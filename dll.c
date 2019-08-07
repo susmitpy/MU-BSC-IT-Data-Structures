@@ -46,8 +46,17 @@ void createList(int n) {
 
 void sort()
 {
-  struct Node* curr, *prev;
-  
+  struct Node* curr = NULL, *index =  NULL;
+  int temp;
+  for(curr=head;curr->next!=NULL;curr=curr->next){
+    for(index=curr->next;index!=NULL;index=index->next){
+      if(curr->data>index->data){
+        temp=curr->data;
+        curr->data=index->data;
+        index->data=temp;
+      }
+    }
+  }
 }
 
 void display()
@@ -70,6 +79,7 @@ int main()
   printf("Original: ");
   display();
   printf("Sorted: ");
+  sort();
   display();
 }
 
