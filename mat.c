@@ -64,9 +64,9 @@ struct Matrix mulMatrices(struct Matrix a, struct Matrix b)
     for(j=0;j<m.c;j++)
     {
       m.m[i][j]=0;
-      for(k=0;k<b.r;k++)
+      for(k=0;k<m.c;k++)
       {
-        m.m[i][j] += a.m[i][k] + b.m[k][j];
+        m.m[i][j] += a.m[i][k] * b.m[k][j];
       }
     }
   }
@@ -77,8 +77,8 @@ struct Matrix tranMatrix(struct Matrix m)
 {
   struct Matrix t;
   int i,j;
-  t.r = m.r;
-  t.c = m.c;
+  t.r = m.c;
+  t.c = m.r;
   for(i=0;i<t.r;i++)
   {
     for(j=0;j<t.c;j++)
@@ -89,22 +89,40 @@ struct Matrix tranMatrix(struct Matrix m)
   return t;
 }
 
+struct Matrix options(struct Matrix a, struct Matrix b){
+	char c;
+	printf("Op: ");
+	scanf(" %c",&c);
+	switch(c){
+		case 'a':
+			return addMatrices(a,b);
+		case 'm':
+			return mulMatrices(a,b);
+		case 't':
+			return tranMatrix(a);
+		default:
+			printf("Invalid Op\n");
+	}
+}
+
+
+
 int main()
 {
- struct Matrix a,b,c,d,e;
- int i,j,k;
+ struct Matrix a,b,ans;
  printf("Mat 1\n");
  a = getMatrix();
  printf("Mat 2\n");
  b = getMatrix();
- printf("\nAddition\n");
- c = addMatrices(a,b);
- displayMatrix(c);
- printf("\nMultiplication\n");
- d = mulMatrices(a,b);
- displayMatrix(d);
- printf("\nTranspose of first matrix: \n");
- e = tranMatrix(a);
- displayMatrix(e);
+ ans = options(a,b);
+ // printf("\nAddition\n");
+ // c = addMatrices(a,b);
+ // displayMatrix(c);
+ // printf("\nMultiplication\n");
+ // d = mulMatrices(a,b);
+ // displayMatrix(d);
+ // printf("\nTranspose of first matrix: \n");
+ // e = tranMatrix(a);
+ displayMatrix(ans);
  return 0;
 }

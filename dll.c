@@ -11,7 +11,7 @@ struct Node
 struct Node* head = NULL;
 struct Node* last = NULL;
 
-void insertNodeAtLast()
+void insertNode()
 {
   int data;
   printf("Enter data: ");
@@ -23,21 +23,6 @@ void insertNodeAtLast()
   last = newNode;
   printf("\nNode inserted\n");
 }
-
-void insertNodeAtStart()
-{
-  int data;
-  printf("Enter data: ");
-  scanf("%d", &data);
-  struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
-  newNode->data = data;
-  newNode->prev = NULL;
-  newNode->next = head;
-  head->prev=newNode;
-  head = newNode;
-  printf("\nNode inserted\n");
-}
-
 
 
 void createList(int n) {
@@ -59,7 +44,22 @@ void createList(int n) {
     }
 }
 
-void displayLR()
+void sort()
+{
+  struct Node* curr = NULL, *index =  NULL;
+  int temp;
+  for(curr=head;curr->next!=NULL;curr=curr->next){
+    for(index=curr->next;index!=NULL;index=index->next){
+      if(curr->data>index->data){
+        temp=curr->data;
+        curr->data=index->data;
+        index->data=temp;
+      }
+    }
+  }
+}
+
+void display()
 {
   struct Node* cn = head;
   while (cn!=NULL) {
@@ -67,6 +67,35 @@ void displayLR()
     cn = cn->next;
   }
   printf("\n");
+}
+
+
+int main()
+{
+  int n;
+  printf("How many elements: ");
+  scanf("%d",&n);
+  createList(n);
+  printf("Original: ");
+  display();
+  printf("Sorted: ");
+  sort();
+  display();
+}
+
+
+void insertNodeAtStart()
+{
+  int data;
+  printf("Enter data: ");
+  scanf("%d", &data);
+  struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
+  newNode->data = data;
+  newNode->prev = NULL;
+  newNode->next = head;
+  head->prev=newNode;
+  head = newNode;
+  printf("\nNode inserted\n");
 }
 
 void displayRL()
@@ -77,54 +106,4 @@ void displayRL()
     cn = cn->prev;
   }
   printf("\n");
-}
-
-
-
-
-
-int main()
-{
-  int n;
-  printf("How many elements: ");
-  scanf("%d",&n);
-  createList(n);
-  printf("Display LR: ");
-  displayLR();
-  printf("Display RL: ");
-  displayRL();
-}
-  printf("Position:%d\n",index+1);
-}
-
-void delete()
-{
-  struct Node* toDel = head;
-  head = head->next;
-  free(toDel);
-}
-
-void reverse()
-{
-  struct Node* cn;
-    printf("%d ",curr->data);
-    curr = curr->next;
-  }
-  printf("\n");
-}
-
-int main()
-  insert(30);
-  printf("Searching for 20\n");
-  search(20);
-  display();
-  printf("\nReversing\n");
-  reverse();
-  display();
-  delete();
-  display();
-  delete();
-  display();
-
-  return 0;
 }
