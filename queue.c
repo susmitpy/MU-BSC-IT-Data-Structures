@@ -5,7 +5,7 @@ int front = -1, rear = -1, Q[MAX];
 
 void enqueue(int x)
 {
-    if (front == MAX - 1){
+    if (rear == MAX-1){
       printf("Queue is full\n");
     }
     else{
@@ -20,8 +20,12 @@ void enqueue(int x)
 
 void dequeue()
 {
-  printf("\nElement Deleted: %d",Q[front]);
-  front++;
+  if (front == -1)
+    printf("Queue is empty\n");
+  else{
+    printf("\nElement Deleted: %d",Q[front]);
+    front++;
+  }
 }
 
 void display()
