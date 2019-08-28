@@ -1,5 +1,5 @@
 //
-//  insertion_sort.c
+//  selection_sort.c
 //
 //  Created by Susmit Vengurlekar on 23/08/19.
 //
@@ -8,16 +8,21 @@
 
 int arr[100],n;
 
+void swap(int *x, int *y){
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
 void sort(){
-    int i,j,k;
-    for (i=1; i < n; i++){
-        k = arr[i];
-        j = i-1;
-        while (j >= 0 &&  arr[j] > k){
-            arr[j+1] = arr[j];
-            j = j-1;
+    int i,j,min_idx;
+    for (i=0; i < n - 1; i++){
+        min_idx = i;
+        for(j = i+1; j < n; j++){
+            if (arr[j] < arr[min_idx])
+                min_idx = j;
         }
-        arr[j+1] = k;
+        swap(&arr[min_idx],&arr[i]);
     }
 }
 
